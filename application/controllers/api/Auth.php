@@ -13,6 +13,24 @@ class Auth extends RestController
         $this->load->model('pengguna_model', 'pengguna');
     }
 
+    public function login_get()
+    {
+        $param = $this->get();
+
+        $where = array(
+            'email' => $param['email'],
+            'password' => $param['password']
+        );
+
+        $data = $this->pengguna->login_pengguna($where);
+
+        if ($data != null) {
+            $this->response(['status' => true, 'message' => 'Berhasil login.', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Email tidak ditemukan atau password salah. Silakan coba lagi.'], 200);
+        }
+    }
+
     public function daftar_post()
     {
         $param = $this->post();
@@ -23,6 +41,7 @@ class Auth extends RestController
         $password = $param['password'];
         $alamat = $param['alamat'];
         $username = $param['username'];
+        $no_telp = $param['no_telp'];
 
         $data = [
             'peran' => $peran,
@@ -32,7 +51,8 @@ class Auth extends RestController
             'status' => 1,
             'foto' => 'default.jpg',
             'alamat' => $alamat,
-            'username' => $username
+            'username' => $username,
+            'no_telp' => $no_telp,
         ];
 
         $res = $this->pengguna->daftar_pengguna($data);
