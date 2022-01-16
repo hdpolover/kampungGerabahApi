@@ -42,6 +42,8 @@ class Auth extends RestController
         $alamat = $param['alamat'];
         $username = $param['username'];
         $no_telp = $param['no_telp'];
+        $lat = $param['latitude'];
+        $longi = $param['longitude'];
 
         $data = [
             'peran' => $peran,
@@ -53,6 +55,8 @@ class Auth extends RestController
             'alamat' => $alamat,
             'username' => $username,
             'no_telp' => $no_telp,
+            'latitude' => $lat,
+            'longitude' => $longi,
         ];
 
         $res = $this->pengguna->daftar_pengguna($data);

@@ -25,15 +25,16 @@ class Pengguna_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function save_edit($data)
+    public function edit_profil_cust($data)
     {
-        $this->db->set('full_name', $data['full_name']);
-        $this->db->set('institution', $data['institution']);
-        $this->db->set('tiktok', $data['tiktok']);
-        $this->db->set('status', $data['status']);
-        $this->db->set('instagram', $data['instagram']);
-        $this->db->set('field_of_study', $data['field_of_study']);
-        $this->db->where('referral_code', $data['referral_code']);
-        return $this->db->update('influencers');
+        $this->db->set('username', $data['username']);
+        $this->db->set('alamat', $data['alamat']);
+        $this->db->set('no_telp', $data['no_telp']);
+        $this->db->set('id_kota', $data['id_kota']);
+        $this->db->set('nama_kota', $data['nama_kota']);
+        $this->db->set('password', $data['password']);
+        $this->db->set('email', $data['email']);
+        $this->db->where('id_pengguna', $data['id_pengguna']);
+        return $this->db->update('pengguna');
     }
 }

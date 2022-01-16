@@ -33,4 +33,28 @@ class Pengguna extends RestController
             ],  200);
         }
     }
+
+    public function edit_cust_get()
+    {
+        $param = $this->get();
+
+        $data = [
+            'id_pengguna' => $param['id_pengguna'],
+            'username' => $param['username'],
+            'alamat' => $param['alamat'],
+            'no_telp' => $param['no_telp'],
+            'id_kota' => $param['id_kota'],
+            'nama_kota' => $param['nama_kota'],
+            'email' => $param['email'],
+            'password' => $param['password'],
+        ];
+
+        $i = $this->pengguna->edit_profil_cust($data);
+
+        if ($i == 1) {
+            $this->response(['status' => true, 'message' => 'Berhasil'], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'gagal.'], 200);
+        }
+    }
 }
