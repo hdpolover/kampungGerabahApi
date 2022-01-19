@@ -11,7 +11,7 @@ class Pengrajin extends RestController
         parent::__construct();
         date_default_timezone_set("Asia/Bangkok");
         //$this->load->model('pengrajin_model', 'pengrajin');
-        $this->load->model('pengrajin_model', 'pengrajin');
+        $this->load->model('pengrajin_model', 'pengajin');
     }
 
     public function index_get()

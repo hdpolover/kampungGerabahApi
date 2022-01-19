@@ -20,14 +20,14 @@ class Pembayaran extends RestController
         $id = $this->get('id_pembayaran');
         $id_tr = $this->get('id_transaksi');
 
-        $pembayaran = $this->pembayaran->validasi($id);
+        $this->pembayaran->validasi($id);
 
         $data = array(
             'id_transaksi' => $id_tr,
             'status_pengiriman' => 1
         );
 
-        $transaksi = $this->transaksi->update_tr($data);
+        $transaksi = $this->transaksi->update_status($data);
 
         if ($transaksi) {
             $this->response([
